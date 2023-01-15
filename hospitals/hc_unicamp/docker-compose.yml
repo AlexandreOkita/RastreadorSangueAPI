@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  dev-container-hc-unicamp:
+    build: .
+    container_name: dev-container-hc-unicamp
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/home/app

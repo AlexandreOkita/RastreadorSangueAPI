@@ -15,7 +15,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: sa-east-1
       # sam build 
-      - run: sam build --use-container
+      - run: sam build --use-container -t ./hospitals/hc_unicamp/hc_unicamp_crawler_function/template.yaml
 
 # Run Unit tests- Specify unit tests here 
 

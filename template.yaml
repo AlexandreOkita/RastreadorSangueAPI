@@ -11,12 +11,15 @@ Globals:
     MemorySize: 128
 
 Resources:
-  HelloWorldFunction:
+  HCUnicampCrawlerFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: hospitals/hc_unicamp/hc_unicamp_crawler_function/hello_world
+      CodeUri: hospitals/hc_unicamp/hc_unicamp_crawler_function/hc_unicamp_blood_status
       Handler: app.lambda_handler
       Runtime: python3.8
+      Policies: 
+        - DynamoDBCrudPolicy:
+            TableName: hospitals_blood_status
       Architectures:
         - x86_64
       Events:

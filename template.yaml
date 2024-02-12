@@ -11,6 +11,20 @@ Globals:
     MemorySize: 128
 
 Resources:
+  HospitalRecordsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/last_hospital_records
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      Events:
+        LastHospitalRecordsApi:
+          Type: Api
+          Properties:
+            Path: /v1/hospitals/records
+            Method: get
   HCUnicampCrawlerFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -23,7 +37,18 @@ Resources:
       Architectures:
         - x86_64
       Events:
-        HelloWorld:
+        HCUnicampCrawlerCron:
           Type: Schedule
           Properties:
             Schedule: cron(0 5 * * ? *)
+
+Outputs:
+  HospitalsRecordsApi:
+    Description: "API Gateway endpoint URL for Prod stage for HospitalRecords function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/v1/hospitals/records/"
+  HospitalRecordsFunction:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt HospitalRecordsFunction.Arn
+  HelloWorldFunctionIamRole:
+    Description: "Implicit IAM Role created for HospitalRecords function"
+    Value: !GetAtt HospitalRecordsFunctionRole.Arn

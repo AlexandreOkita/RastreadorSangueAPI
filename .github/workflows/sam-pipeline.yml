@@ -20,4 +20,4 @@ jobs:
 # Run Unit tests- Specify unit tests here 
 
 # sam deploy
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world --s3-bucket rastreador-sangue-functions --capabilities CAPABILITY_IAM --region sa-east-1
+      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-rastreador-sangue --s3-bucket rastreador-sangue-functions --capabilities CAPABILITY_IAM --region sa-east-1

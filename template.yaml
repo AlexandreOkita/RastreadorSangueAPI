@@ -47,8 +47,8 @@ Outputs:
     Description: "API Gateway endpoint URL for Prod stage for HospitalRecords function"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/v1/hospitals/records/"
   HospitalRecordsFunction:
-    Description: "Hello World Lambda Function ARN"
+    Description: "HospitalRecords Lambda Function ARN"
     Value: !GetAtt HospitalRecordsFunction.Arn
-  HelloWorldFunctionIamRole:
+  HospitalRecordsFunctionIamRole:
     Description: "Implicit IAM Role created for HospitalRecords function"
     Value: !GetAtt HospitalRecordsFunctionRole.Arn

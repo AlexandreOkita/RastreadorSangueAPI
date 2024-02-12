@@ -26,7 +26,6 @@ def lambda_handler(event, context):
     else:
         response = table.scan(
             Limit=limit,
-            ScanIndexForward=False
         )
 
     items = response['Items']

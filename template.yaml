@@ -1,9 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  hc_unicamp_crawler_function
+  Rastreador de Sangue API
 
-  Sample SAM Template for hc_unicamp_crawler_function
+  Sample SAM Template for RastreadorSangueAPI
 
 Globals:
   Function:
@@ -28,22 +28,10 @@ Resources:
           Properties:
             Path: /v1/hospitals/records
             Method: get
-  HCUnicampCrawlerFunction:
-    Type: AWS::Serverless::Function
+  HospitalCrawlers:
+    Type: AWS::CloudFormation::Stack
     Properties:
-      CodeUri: hospitals/hc_unicamp/hc_unicamp_crawler_function/hc_unicamp_blood_status
-      Handler: app.lambda_handler
-      Runtime: python3.9
-      Policies: 
-        - DynamoDBCrudPolicy:
-            TableName: hospitals_blood_status
-      Architectures:
-        - x86_64
-      Events:
-        HCUnicampCrawlerCron:
-          Type: Schedule
-          Properties:
-            Schedule: cron(0 5 * * ? *)
+      TemplateURL: ./hospitals/hospital_lambdas.yaml
 
 Outputs:
   HospitalsRecordsApi:

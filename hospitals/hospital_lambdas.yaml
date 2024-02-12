@@ -1,0 +1,8 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Sample SAM Template including all crawler functions
+Resources:
+  HCUnicampCrawlerFunction:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: ./hc_unicamp/template.yaml

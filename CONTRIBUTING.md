@@ -18,12 +18,12 @@ Agora é hora de fazer a sua contribuição! Mas antes de fazer isso, crie uma n
 
 #### Adicionando um novo hospital
 
-A ideia do projeto é que sejam criados diversos crawlers que serão executados em cima de lambdas diariamente e que irão alimentar um banco de dados que é consumido pela APIO. Desse modo, para adicionar um novo hospital na base há 4 passos que podem ser seguidos:
+A ideia do projeto é que sejam criados diversos crawlers que serão executados em cima de lambdas diariamente e que irão alimentar um banco de dados que é consumido pela API. Desse modo, para adicionar um novo hospital na base há 4 passos que podem ser seguidos:
     
 1. Procurar um hospital que publique de algum modo o estado dos estoques de sangue. Essa publicação normalmente é feita diretamente em um site como no [exemplo](https://www.prosangue.sp.gov.br/home/).
 2. Criar uma função que consiga obter esses dados e que os adicione na tabela DynamoDB que é consumida pela API (a estrutura de diretórios sugerida é ```hospitals/{nome_hospital}/{nome_hospital_crawler_function}/app.py```). Para saber mais sobre a estrutura da tabela, veja a seção logo após essa. Um exemplo pode ser visto nesse [arquivo](hospitals/hc_unicamp/hc_unicamp_crawler_function/hc_unicamp_blood_status/app.py) (o arquivo está em python mas sita-se livre para utilizar qualquer linguagem suportada pela Lambda).
 3. Criar o arquivo ```template.yaml``` da sua função. Esse arquivo cria a lambda que será responsável por executar seu código diariamente. Um exemplo para ser seguido pode ser encontrado [aqui](hospitals/hc_unicamp/template.yaml) 
-4. Adicionar a nova lambda no arquivo [hospital_lambdas.yaml](hospitals/hospital_lambdas.yaml). Adicione um novo resource com o nome da sua função é com a nova Location.
+4. Adicionar a nova lambda no arquivo [hospital_lambdas.yaml](hospitals/hospital_lambdas.yaml). Adicione um novo resource com o nome da sua função com a nova Location (não esqueça de mudar o nome do recurso).
 
 #### Estrutura dos dados
 

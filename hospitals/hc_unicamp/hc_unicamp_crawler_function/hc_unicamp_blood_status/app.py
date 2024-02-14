@@ -12,19 +12,19 @@ def lambda_handler(event, context):
     crawler = unicamp_crawler.UnicampBloodCenterCrawler()
 
     unicamp_supply = crawler.get_blood_suplies()
-    
+    print(unicamp_supply)
     table.put_item(
         Item={
             'hospital': 'unicamp',
             'date': datetime.now().isoformat(),
-            'a_plus_status': unicamp_supply['A+'],
-            'a_minus_status': unicamp_supply['A-'],
-            'b_plus_status': unicamp_supply['B+'],
-            'b_minus_status': unicamp_supply['B-'],
-            'ab_plus_status': unicamp_supply['AB+'],
-            'ab_minus_status': unicamp_supply['AB-'],
-            'o_plus_status': unicamp_supply['O+'],
-            'o_minus_status': unicamp_supply['O-']
+            'a_plus_status': unicamp_supply.get('A+', 'unknown'),
+            'a_minus_status': unicamp_supply.get('A-', 'unknown'),
+            'b_plus_status': unicamp_supply.get('B+', 'unknown'),
+            'b_minus_status': unicamp_supply.get('B-', 'unknown'),
+            'ab_plus_status': unicamp_supply.get('AB+', 'unknown'),
+            'ab_minus_status': unicamp_supply.get('AB-', 'unknown'),
+            'o_plus_status': unicamp_supply.get('O+', 'unknown'),
+            'o_minus_status': unicamp_supply.get('O-', 'unknown')
         }
     )
     return {

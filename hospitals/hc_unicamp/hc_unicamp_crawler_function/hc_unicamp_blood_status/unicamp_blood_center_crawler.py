@@ -5,9 +5,9 @@ from enum import Enum
 UNICAMP_BLOOD_CENTER_URL = 'https://www.hemocentro.unicamp.br/'
 
 class BloodSupplyStatus(Enum):
-    CRITIC = "vc_col-sm-3 estoque-sangue-critico"
-    ALERT = "vc_col-sm-3 estoque-sangue-alerta"
-    STABLE = "vc_col-sm-3 estoque-sangue-estavel"
+    CRITIC = "lista-estoque__item estado-critico"
+    ALERT = "lista-estoque__item estado-alerta"
+    STABLE = "lista-estoque__item estado-estavel"
 
 class UnicampBloodCenterCrawler:
 
